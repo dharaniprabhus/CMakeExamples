@@ -1,0 +1,6 @@
+function(print_all_vars)
+    get_cmake_property(all_vars VARIABLES)
+    foreach(var all_vars)
+        message(STATUS "${var}='${${var}}'")
+    endforeach()
+endfunction()

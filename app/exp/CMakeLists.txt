@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(exp)
-
 add_library(exp STATIC
    include/exp.h
    src/exp.cpp
@@ -9,5 +7,5 @@ add_library(exp STATIC
 
 target_include_directories(exp 
 	PUBLIC
-        "${PROJECT_SOURCE_DIR}/include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/include"
 )
