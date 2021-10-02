@@ -17,6 +17,11 @@ function(print_all_files)
     endforeach()
 endfunction()
 
+function (add_item items)
+    list(APPEND ${items} green)
+    set(${items} ${${items}} PARENT_SCOPE)
+endfunction()
+
 function(print_vars items)
     foreach(item ${${items}})
         message("${item}")
@@ -24,9 +29,10 @@ function(print_vars items)
 endfunction()
 
 set (colors red blue)
-print_all_files()
+add_item(colors)
 print_vars(colors)
 
+print_all_files()
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 include(PrintCMakeVars)
 
