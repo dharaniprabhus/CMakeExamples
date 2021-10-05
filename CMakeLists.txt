@@ -17,6 +17,7 @@ function(print_all_files)
     endforeach()
 endfunction()
 
+#updating a variable in a function
 function (add_item items)
     list(APPEND ${items} green)
     set(${items} ${${items}} PARENT_SCOPE)
@@ -33,6 +34,49 @@ add_item(colors)
 print_vars(colors)
 
 print_all_files()
+
+#variables
+set(MYBOOLON ON)
+set(MYBOOLOFF OFF)
+set(MYSTR "foo")
+set(MYID 10)
+
+if (MYBOOLON)
+    message(MYBOOLON " set")
+endif()
+
+if (MYBOOLOFF)
+    message(MYBOOLOFF " set")
+endif()
+
+if (MYSTR)
+    message(MYSTR " set")
+endif()
+
+if (MYSTR STREQUAL "foo")
+    message(${MYSTR} " = foo")
+endif()
+
+if (NOT MYSTR STREQUAL "bar")
+    message(${MYSTR} " != bar")
+endif()
+
+if (MYSTR MATCHES "f.*")
+    message(${MYSTR} " matches expression f.*")
+endif()
+
+if (MYID EQUAL 10)
+    message(${MYID} " = 10")
+endif()
+
+if (MYID LESS 10)
+    message(${MYID} " < 10")
+endif()
+
+if (MYID GREATER 10)
+    message(${MYID} " > 10")
+endif()
+
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/modules")
 include(PrintCMakeVars)
 
